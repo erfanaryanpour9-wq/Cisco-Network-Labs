@@ -1,0 +1,24 @@
+Switch L2:
+- Switch(config)#hostname 2960-24-L2
+- 2960-24-L2(config)#interface vlan 1
+- 2960-24-L2(config-if)#no shutdown 
+- 2960-24-L2(config-if)#ip address 10.20.30.1 255.255.255.0
+- 2960-24-L2(config-if)#exit
+- 2960-24-L2#copy running-config startup-config 
+- 2960-24-L2#write
+
+Switch L3:
+- Switch(config)#hostname Switch-3560-24P
+- Switch-3560-24P(config)#interface fastEthernet 0/1
+- Switch-3560-24P(config-if)#no switchport 
+- Switch-3560-24P(config-if)#ip address 10.20.30.1 255.255.255.0
+- Switch-3560-24P(config-if)#do ping 10.20.30.40
+- Switch(config)#do wr
+
+Router 2911:
+- Router(config)#hostname Router-2911
+- Router-2911(config)#interface fastEthernet 0/0
+- Router-2911(config-if)#no shutdown 
+- Router-2911(config-if)#ip address 10.20.30.1 255.255.255.0
+- Router-2911#copy running-config startup-config 
+
